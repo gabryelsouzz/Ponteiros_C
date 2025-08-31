@@ -95,6 +95,7 @@ int buscarCaractere(const char *str, char c) {
     return -1; // Caractere não encontrado
 }
 
+
 int main() {
     /*
         Programa que lê uma lista de nomes de estudantes, armazena
@@ -142,7 +143,7 @@ int main() {
         copiarString(lista_nomes[i], buffer);
     }
     
-    qsort(lista_nomes, n, sizeof(char *), compararStrings);
+    qsort(lista_nomes, n, sizeof(char *), compararStrings);                         // !!!! Utiliza o swap de ponteiros para strings. Demonstração ao fim do código.
     
     printf("\nNomes ordenados:\n");
 
@@ -153,4 +154,24 @@ int main() {
     free(lista_nomes);
     
     return 0;
+}
+
+void swapStrings(char **a, char **b) {
+
+    /*
+        Função que troca duas strings utilizando ponteiros para ponteiros. 
+        Implementada para demonstrar o swap de ponteiros na função qsort().
+        A string a passa a ser apontada pela string b e vice-versa.
+
+        args:
+            a: ponteiro para a primeira string
+            b: ponteiro para a segunda string
+
+        return:
+            void
+    */
+
+    char *temp = *a;
+    *a = *b;
+    *b = temp;
 }
